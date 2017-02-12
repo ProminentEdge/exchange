@@ -1,9 +1,10 @@
 import os
 
+ROOT_URLCONF = 'exchange.urls'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '6((ie#5#8yu%r4j)s@*qzhp!o2*6lu07s846(xahxi^uoy52h6'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserver']
 INSTALLED_APPS = (
     'exchange.core',
     'exchange.themes',
