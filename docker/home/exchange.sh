@@ -7,6 +7,9 @@ source "/etc/profile.d/vendor-libs.sh"
 # path to the log for this shell script - used by log() in common.sh
 readonly startup_log="/tmp/exchange_startup.log"
 
+# make directory for fileservice files
+mkdir -p ${HERE}/.storage/media/fileservice
+
 start_django () {
     local django_address="${django_host}:${django_port}"
     log "Starting django on ${django_address}"

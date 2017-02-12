@@ -26,10 +26,14 @@ from maploom.geonode.urls import urlpatterns as maploom_urls
 from geonode.urls import urlpatterns as geonode_urls
 from . import views
 from django.views.defaults import page_not_found
+from fileservice.api import FileItemResource
+
 
 js_info_dict = {
     'packages': ('geonode.layers',),
 }
+
+fileitem_resource = FileItemResource()
 
 urlpatterns = patterns(
     '',
@@ -46,6 +50,8 @@ urlpatterns = patterns(
     url(r'^csw/new/$', views.insert_csw, name='insert_csw'),
     url(r'^csw/status/$', views.csw_status, name='csw_status'),
     url(r'^csw/status_table/$', views.csw_status_table, name='csw_status_table'),
+    url(r'^api/', include(fileitem_resource.urls)),
+
 )
 
 if settings.REGISTRY is False:

@@ -19,9 +19,10 @@ Steps to run tests locally:
 
    pip install pytest-cov
    export DJANGO_SETTINGS_MODULE='exchange.settings'
+
+   # see exchange/settings/test_settings.py
    export PYTEST=1
+
    python manage.py migrate
    python manage.py collectstatic --noinput
-   py.test --ignore=tests/ \
-           --cov-report html:cov_html \
-           --cov=exchange exchange/tests/
+   py.test --ignore=tests/ --cov-report html:cov_html --cov=exchange exchange/tests/
