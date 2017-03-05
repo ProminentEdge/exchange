@@ -1,7 +1,19 @@
 import os
+from default import *
 
-ROOT_URLCONF = 'exchange.urls'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, '../.storage/static_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../.storage/media')
+
+FILESERVICE_CONFIG = {
+    'store_dir': os.path.join(MEDIA_ROOT, 'fileservice'),
+    'types_allowed': ['.jpg', '.jpeg', '.png'],
+    'streaming_supported': True
+}
+
+
+'''
+ROOT_URLCONF = 'exchange.urls'
 SECRET_KEY = '6((ie#5#8yu%r4j)s@*qzhp!o2*6lu07s846(xahxi^uoy52h6'
 DEBUG = True
 ALLOWED_HOSTS = ['testserver']
@@ -51,7 +63,14 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-STATIC_ROOT = os.path.join(BASE_DIR, '../.storage/static_root')
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '../.storage/media')
 MEDIA_URL = '/media/'
+
+
+FILESERVICE_CONFIG = {
+    'store_dir': os.getenv('FILESERVICE_MEDIA_ROOT', None),
+    'types_allowed': ['.jpg', '.jpeg', '.png'],
+    'streaming_supported': False
+}
+
+'''
